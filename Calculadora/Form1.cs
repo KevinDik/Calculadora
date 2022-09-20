@@ -67,10 +67,17 @@ namespace Calculadora
                 }
                 if (resultado != -11111111)
                     break;
+
                 idenx++;
             }
             //mostra resultado
-            MessageBox.Show(algoritmo + " = " + resultado);
+            if (resultado == -11111111)
+                MessageBox.Show("Erro na operação");
+            else
+            {
+                MessageBox.Show(algoritmo + " = " + resultado);
+            }
+            
 
             //limpa a textbox
             txt_operacao.Text = "";
@@ -91,6 +98,11 @@ namespace Calculadora
 
             if (e.KeyCode == Keys.Return)
                 cmd_calcular_Click(cmd_calcular, EventArgs.Empty);
+            else if (e.KeyCode == Keys.Escape)
+            {
+                txt_operacao.Text = "";
+                txt_operacao.Focus();
+            }
         }
     }
 }
